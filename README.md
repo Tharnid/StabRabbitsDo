@@ -31,10 +31,17 @@ sudo systemctl start postgresql
 sudo systemctl enable postgresql
 
 ### Create main project
+
 django-admin startproject <project name>
 
 ### Create app inside main project
+
 python3 manage.py <project name>
 
 ### Bootstrap
+
 https://www.techwithtim.net/tutorials/django/adding-bootstrap/
+
+### Ubuntu
+
+apt-get update && apt-get upgrade

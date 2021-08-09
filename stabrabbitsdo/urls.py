@@ -21,7 +21,9 @@ urlpatterns = [
     path('admin/', admin.site.urls),
 
     # auth
-    path('signup/', views.signupuser, name='signupuser'),
+    path('signup/', views.home, name='signupuser'),
+    path('login/', views.loginuser, name='loginuser'),
+    path('logout/', views.logoutuser, name='logoutuser'),
 
     # homepage
 
@@ -29,6 +31,7 @@ urlpatterns = [
     # path('',include('blog.urls'))
 
     # todo
+    path('', views.home, name='home'),
     path('current', views.currenttodos, name='currenttodos')
 
     # playlist   
