@@ -2,14 +2,14 @@
 
 {% block content %}
 
-<h1>Sign Up!!!</h1>
-<br />
+<h1>Create Todo</h1>
+
 <h2>{{ error }}</h2>
-<br />
+
 <form method="POST">
 {% csrf_token %}
 {{ form.as_p }}
-<button type="submit" class="btn btn-primary">Sign Up!!!</button>
-<form>
+<button type="submit" class="btn btn-primary">Create Todo</button>
+</form>
 
 {% endblock %}

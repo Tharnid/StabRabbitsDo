@@ -2,6 +2,17 @@
 
 {% block content %}
 
-Current Todos
+<h4>Current Todos</h4>
+
+<ul class="list-unstyled">
+    {% for todo in todos %}
+    <li>
+        {% comment %} <a href="{% url 'viewtodo' todo.id %}"> {% endcomment %}
+            {% if todo.important %}<b>{% endif %}{{ todo.title }}{% if todo.important %}</b>{% endif %}
+            {% if todo.note %} - {{ todo.note }}{% endif %}
+        {% comment %} </a> {% endcomment %}
+    </li>
+    {% endfor %}
+</ul>
 
 {% endblock %}

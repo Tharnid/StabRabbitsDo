@@ -10,8 +10,8 @@ ctrl + d to exit out of repl
 
 ## gunicorn
 
-sudo systemctl daemon-reload
-sudo systemctl restart gunicorn
+sudo systemctl daemon-reload && sudo systemctl restart gunicorn
+
 sudo journalctl -u gunicorn
 sudo systemctl status gunicorn
 

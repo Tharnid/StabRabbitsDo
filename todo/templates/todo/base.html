@@ -1,23 +1,38 @@
-{% if user.is_authenticated %}
+<!DOCTYPE html>
+<html lang="en">
 
-<h3>Logged in as {{ user.username }}</h3>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
 
-<form action="{% url 'logoutuser' %}" method="POST">
-    {% csrf_token %}
-    <button type="submit">Logout</button>
-</form>
+    </head>
 
-<br />
-<br />
+    <body>
+        <div class="container">
+            {% if user.is_authenticated %}
+            
+            <p>Logged in as <b>{{ user.username }}</b></p>
 
-{% else %}
+            <form action="{% url 'logoutuser' %}" method="POST">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-primary">Logout</button>
+            </form>
 
-<a href="{% url 'signupuser' %}">Sign Up</a>
-<a href="{% url 'loginuser' %}">Login</a>
+            <br />
 
-{% endif %}
+            {% else %}
 
-<br />
-<br />
+            <a href="{% url 'signupuser' %}" class="link-primary">Sign Up</a>
+            <a href="{% url 'loginuser' %}" class="link-primary">Login</a>
 
-{% block content %}{% endblock %}
+            {% endif %}
+
+            <br />
+            <br />
+
+            {% block content %}{% endblock %}
+
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>    
+        </div>
+    </body>
+</html>
