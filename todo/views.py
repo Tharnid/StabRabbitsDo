@@ -70,4 +70,38 @@ def currenttodos(request):
     todos = Todo.objects.filter(user=request.user, datecompleted__isnull=True)
     return render(request, 'todo/currenttodos.html', {'todos': todos})
 
+@login_required
+def completedtodos(request):
+    # todos = Todo.objects.all()
+    todos = Todo.objects.filter(user=request.user, datecompleted__isnull=False).order_by('-datecompleted')
+    return render(request, 'todo/completedtodos.html', {'todos': todos})
 
+@login_required
+def viewtodo(request, todo_pk):
+    todo = get_object_or_404(Todo, pk=todo_pk)
+    if request.method == 'GET':
+        form = TodoForm(instance=todo) # very cool it will automatically forward the info
+        return render(request, 'todo/viewtodo.html', {'todo': todo, 'form': form})
+    else:
+        try:
+            form = TodoForm(request.POST, instance=todo)
+            form.save()
+            return redirect('currenttodos')
+        except ValueError:
+            form = TodoForm(request.POST)     
+            return render(request, 'todo/viewtodo.html', {'todo':todo(), 'form': form,  'error': 'Bad Data Passed In.  Try Again!!!'})
+
+@login_required    
+def completetodo(request, todo_pk):
+    todo = get_object_or_404(Todo, pk=todo_pk, user=request.user)
+    if request.method == 'POST':
+        todo.datecompleted = timezone.now()
+        todo.save()
+        return redirect('currenttodos')
+
+@login_required
+def deletetodo(request, todo_pk):
+    todo = get_object_or_404(Todo, pk=todo_pk, user=request.user)
+    if request.method == 'POST':
+        todo.delete()
+        return redirect('currenttodos')

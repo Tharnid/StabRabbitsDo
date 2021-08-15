@@ -7,10 +7,10 @@
 <ul class="list-unstyled">
     {% for todo in todos %}
     <li>
-        {% comment %} <a href="{% url 'viewtodo' todo.id %}"> {% endcomment %}
+        <a href="{% url 'viewtodo' todo.id %}">
             {% if todo.important %}<b>{% endif %}{{ todo.title }}{% if todo.important %}</b>{% endif %}
             {% if todo.note %} - {{ todo.note }}{% endif %}
-        {% comment %} </a> {% endcomment %}
+        </a> 
     </li>
     {% endfor %}
 </ul>
