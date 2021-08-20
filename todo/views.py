@@ -8,6 +8,7 @@ from .models import Todo
 from django.utils import timezone
 from django.contrib.auth.decorators import login_required
 
+@login_required
 def home(request):
     return render(request, 'todo/home.html')
 
