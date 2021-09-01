@@ -31,6 +31,14 @@ sudo systemctl status postgresql
 sudo systemctl start postgresql
 sudo systemctl enable postgresql
 
+#### Postgres command line
+\l show dbs
+\c <whatever db> / \c stabrabbitsdo
+
+\dt shows tables
+
+sudo -u postgres psql
+
 ### Create main project
 
 django-admin startproject <project name>

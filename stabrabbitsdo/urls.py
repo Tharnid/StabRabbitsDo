@@ -17,6 +17,7 @@ from django.contrib import admin
 from django.urls import path, include
 from todo import views
 
+
 urlpatterns = [
     path('admin/', admin.site.urls),
 
@@ -26,7 +27,7 @@ urlpatterns = [
     path('logout/', views.logoutuser, name='logoutuser'),
 
     # homepage
-
+    
     # blog
     # path('',include('blog.urls'))
 
@@ -37,10 +38,15 @@ urlpatterns = [
     path('completed/', views.completedtodos, name='completedtodos'),
     path('todo/<int:todo_pk>', views.viewtodo, name='viewtodo'),
     path('todo/<int:todo_pk>/complete', views.completetodo, name='completetodo'),
-    path('todo/<int:todo_pk>/delete', views.deletetodo, name='deletetodo'),
-
-    # playlist   
+    path('todo/<int:todo_pk>/delete', views.deletetodo, name='deletetodo'), 
 
     # songs 
+    path('songs/', include('songs.urls')),
+
+    # path('current/', views.acousticonlysongs, name='acousticonlysongs'),
+    # path('current/', views.electriconlysongs, name='electriconlysongs'),
+    # path('backlog/', views.backloggedsongs, name='backloggedsongs'),
+    # path('songs/<int:todo_pk>', views.viewsong, name='viewsong'),
+    # path('songs/<int:todo_pk>/delete', views.deletesong, name='deletesong'),
 
 ]
