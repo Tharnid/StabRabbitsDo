@@ -53,8 +53,8 @@
             </form>
         </div>
     </div>
-    {% comment %} <form style='display: none;' method="POST" action="{% url 'deletesong' song.id %}">
+     <form style='display: none;' method="POST" action="{% url 'deletesong' song.id %}">
         {% csrf_token %}
         <button id="delete" type="submit">Delete</button>
-    </form> {% endcomment %}
+    </form> 
 {% endblock %}

@@ -48,8 +48,11 @@ def viewsong(request, song_pk):
             return render(request, 'songs/viewtodo.html', {'song':song(), 'form': form,  'error': 'Bad Data Passed In.  Try Again!!!'})
 
 @login_required
-def deletesong(request):
-    pass
+def deletesong(request, song_pk):
+    song = get_object_or_404(Song, pk=song_pk, user=request.user)
+    if request.method == 'POST':
+        song.delete()
+        return redirect('currentplaylistsongs')
 
 
       
