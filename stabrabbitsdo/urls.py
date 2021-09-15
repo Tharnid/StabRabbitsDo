@@ -29,10 +29,10 @@ urlpatterns = [
     # homepage
     
     # blog
-    # path('',include('blog.urls'))
+    path('',include('blog.urls')),
 
     # todo
-    path('', views.home, name='home'),
+    # path('', views.home, name='home'),
     path('create/', views.createtodo, name='createtodo'),
     path('current/', views.currenttodos, name='currenttodos'),
     path('completed/', views.completedtodos, name='completedtodos'),
@@ -41,12 +41,6 @@ urlpatterns = [
     path('todo/<int:todo_pk>/delete', views.deletetodo, name='deletetodo'), 
 
     # songs 
-    path('songs/', include('songs.urls')),
-
-    # path('current/', views.acousticonlysongs, name='acousticonlysongs'),
-    # path('current/', views.electriconlysongs, name='electriconlysongs'),
-    # path('backlog/', views.backloggedsongs, name='backloggedsongs'),
-    # path('songs/<int:todo_pk>', views.viewsong, name='viewsong'),
-    # path('songs/<int:todo_pk>/delete', views.deletesong, name='deletesong'),
+    path('songs/', include('songs.urls'))
 
 ]
